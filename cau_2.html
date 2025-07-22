@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<input id="inputnumber" placeholder="Nhap so dien thoai" type="text">
+<button id="btncheck"> check  </button>
+<span id="spannumber"></span>
+
+<body>
+    <Script>
+        var inputnumber = document.getElementById("inputnumber");
+        var btncheck = document.getElementById("btncheck");
+        var spannumber = document.getElementById("spannumber");
+        btncheck.onclick = () => {
+            const number = inputnumber;
+            const phone = /^0\d{9}$/;
+            if (phone.test(inputnumber.value)) {
+                spannumber.textContent = "So dien thoai hop le";
+                spannumber.className = "success";
+
+            } else {
+                spannumber.textContent = "Vui long nhap lai so dien thoai";
+                spannumber.className = "error";
+            }
+        };
+    </Script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<input id="inputemail" placeholder="Nhap email" type="text">
+<button id="btncheck"> check  </button>
+<span id="spanemail"></span>
+
+<body>
+    <Script>
+        var inputemail = document.getElementById("inputemail");
+        var btncheck = document.getElementById("btncheck");
+        var spanemail = document.getElementById("spanemail");
+        btncheck.onclick = () => {
+            const email = inputemail;
+            const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+            if (regex.test(inputemail.value)) {
+                spanemail.textContent = "Email hop le";
+                spanemail.className = "success";
+
+            } else {
+                spanemail.textContent = "Vui long nhap lai email";
+                spanemail.className = "error";
+            }
+        };
+    </Script>
+
+</body>
+
+</html>
