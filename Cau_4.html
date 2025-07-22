@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<input id="inputname" placeholder="Nhap name" type="text">
+<button id="btncheck"> check  </button>
+<span id="spanname"></span>
+
+<body>
+    <Script>
+        var inputname = document.getElementById("inputname");
+        var btncheck = document.getElementById("btncheck");
+        var spanname = document.getElementById("spanname");
+        btncheck.onclick = () => {
+            const name = inputname;
+            const regex = /^[A-Za-zÀ-Ỹà-ỹ\s]+$/;
+            if (inputname = " ") {
+                spanname.textContent = "error";
+            } else if (regex.test(inputname.value)) {
+                spanname.textContent = "Ho va ten hop le";
+                spanname.className = "success";
+
+            } else {
+                spanname.textContent = "Vui long nhap lai ho va ten";
+                spanname.className = "error";
+            }
+        };
+    </Script>
+
+</body>
+
+</html>
