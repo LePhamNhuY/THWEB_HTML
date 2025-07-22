@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input id="Mabuudien" placeholder="Nhập mã bưu điện" type="text">
+    <button id="btnCheck">Kiểm tra</button>
+    <span id="result"></span>
+
+    <script>
+        const Mabuudien = document.getElementById("Mabuudien");
+        const btnCheck = document.getElementById("btnCheck");
+        const result = document.getElementById("result");
+
+        btnCheck.onclick = () => {
+            const code = Mabuudien.value;
+            const regex = /^\d{5}$/;
+            if (regex.test(code)) {
+                result.textContent = "Mã bưu điện hợp lệ";
+                result.className = "success";
+            } else {
+                result.textContent = "Mã bưu điện không hợp lệ";
+                result.className = "error";
+            }
+        };
+    </script>
+
+</body>
+
+</html>
