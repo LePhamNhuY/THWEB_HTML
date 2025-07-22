@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input id="inputUsername" placeholder="Nhập username" type="text">
+    <button id="btnCheck">Kiểm tra</button>
+    <span id="resultUsername"></span>
+
+    <script>
+        const inputUsername = document.getElementById("inputUsername");
+        const btnCheck = document.getElementById("btnCheck");
+        const resultUsername = document.getElementById("resultUsername");
+
+        btnCheck.onclick = () => {
+            const username = inputUsername.value;
+            const regex = /^[a-zA-Z0-9_]{5,15}$/;
+
+            if (regex.test(username)) {
+                resultUsername.textContent = "Username hợp lệ";
+                resultUsername.className = "success";
+            } else {
+                resultUsername.textContent = "Username không hợp lệ (chỉ dùng chữ, số, _ và 5–15 ký tự)";
+                resultUsername.className = "error";
+            }
+        };
+    </script>
+
+</body>
+
+</html>
