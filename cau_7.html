@@ -20,7 +20,7 @@
 
 <body>
 
-    <input id="inputIP" placeholder="Nhập địa chỉ IP" type="text">
+    <input id="inputIP" type="text" placeholder="Nhập địa chỉ IP">
     <button id="btnCheck">Kiểm tra</button>
     <span id="resultIP"></span>
 
@@ -31,31 +31,15 @@
 
         btnCheck.onclick = () => {
             const ip = inputIP.value;
-            const arr = ip.split(".");
+            const ipv4Regex = /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
 
-            if (arr.length !== 4) {
-                resultIP.textContent = "Địa chỉ IP phải có 4 phần, cách nhau bằng dấu chấm.";
+            if (ipv4Regex.test(ip)) {
+                resultIP.textContent = "Địa chỉ IP hợp lệ.";
+                resultIP.className = "success";
+            } else {
+                resultIP.textContent = "Địa chỉ IP không hợp lệ.";
                 resultIP.className = "error";
-                return;
             }
-
-            for (let i = 0; i < 4; i++) {
-                const num = parseInt(arr[i], 10);
-
-                if (
-                    isNaN(num) ||
-                    num < 0 || num > 255 ||
-                    arr[i].includes(" ") ||
-                    arr[i] !== String(num) // Loại bỏ trường hợp "01", "001"
-                ) {
-                    resultIP.textContent = `Phần ${i + 1} không hợp lệ`;
-                    resultIP.className = "error";
-                    return;
-                }
-            }
-
-            resultIP.textContent = "Địa chỉ IP hợp lệ";
-            resultIP.className = "success";
         };
     </script>
 
