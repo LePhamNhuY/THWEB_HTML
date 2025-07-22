@@ -27,9 +27,9 @@
         var btncheck = document.getElementById("btncheck");
         var spanname = document.getElementById("spanname");
         btncheck.onclick = () => {
-            const name = inputname;
+            const name = inputname.value;
             const regex = /^[A-Za-zÀ-Ỹà-ỹ\s]+$/;
-            if (inputname = " ") {
+            if (inputname == " ") {
                 spanname.textContent = "error";
             } else if (regex.test(inputname.value)) {
                 spanname.textContent = "Ho va ten hop le";

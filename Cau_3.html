@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<input id="inputmk" placeholder="Nhap Mat khau" type="text">
+<button id="btncheck"> check  </button>
+<span id="spanmk"></span>
+
+<body>
+    <Script>
+        var inputmk = document.getElementById("inputmk");
+        var btncheck = document.getElementById("btncheck");
+        var spanmk = document.getElementById("spanmk");
+        btncheck.onclick = () => {
+            const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+            if (regex.test(inputmk.value)) {
+                spanmk.textContent = "Mật khẩu an toàn";
+                spanmk.className = "success";
+
+            } else {
+                spanmk.textContent = "Mật khẩu không an toàn";
+                spanmk.className = "error";
+            }
+        };
+    </Script>
+
+</body>
+
+</html>
