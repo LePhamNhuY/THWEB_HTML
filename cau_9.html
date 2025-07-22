@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input id="cardNumber" placeholder="Nhập số thẻ tín dụng" type="text">
+    <button id="btnCheck">Kiểm tra</button>
+    <span id="resultCard"></span>
+
+    <script>
+        const cardNumber = document.getElementById("cardNumber");
+        const btnCheck = document.getElementById("btnCheck");
+        const resultCard = document.getElementById("resultCard");
+
+        btnCheck.onclick = () => {
+            const input = cardNumber.value;
+            const regex = /^(?:\d{16}|\d{4} \d{4} \d{4} \d{4})$/;
+            if (regex.test(input)) {
+                resultCard.textContent = "Số thẻ hợp lệ";
+                resultCard.className = "success";
+            } else {
+                resultCard.textContent = "Số thẻ không hợp lệ";
+                resultCard.className = "error";
+            }
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input id="inputURL" type="text" placeholder="Nhập URL">
+    <button id="btnCheck">Kiểm tra</button>
+    <span id="resultURL"></span>
+
+    <script>
+        const inputURL = document.getElementById("inputURL");
+        const btnCheck = document.getElementById("btnCheck");
+        const resultURL = document.getElementById("resultURL");
+
+        btnCheck.onclick = () => {
+            const url = inputURL.value;
+            const regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
+            if (regex.test(url)) {
+                resultURL.textContent = "URL hợp lệ";
+                resultURL.className = "success";
+            } else {
+                resultURL.textContent = "URL không hợp lệ";
+                resultURL.className = "error";
+            }
+        };
+    </script>
+
+</body>
+
+</html>
