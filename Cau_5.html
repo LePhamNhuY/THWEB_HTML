@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+            color: white;
+        }
+        
+        .success {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="inputDate" placeholder="Nhập ngày sinh" type="text">
+    <button id="btnCheck">Kiểm tra</button>
+    <span id="spandate"></span>
+
+    <script>
+        const inputDate = document.getElementById("inputDate");
+        const btnCheck = document.getElementById("btnCheck");
+        const spandate = document.getElementById("spandate");
+
+        btnCheck.onclick = () => {
+            const value = inputDate.value;
+            const arr = value.split('/');
+            if (arr.length !== 3) {
+                spandate.textContent = "Sai định dạng. Vui lòng nhập theo dd/mm/yyyy.";
+                spandate.className = "error";
+                return;
+            }
+
+            const day = parseInt(arr[0], 10);
+            const month = parseInt(arr[1], 10) - 1;
+            const year = parseInt(arr[2], 10);
+
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                spandate.textContent = " Ngày, tháng hoặc năm không hợp lệ.";
+                spandate.className = "error";
+                return;
+            }
+
+            const date = new Date(year, month, day);
+            if (
+                date.getFullYear() === year &&
+                date.getMonth() === month &&
+                date.getDate() === day
+            ) {
+                const today = new Date();
+                if (date > today) {
+                    spandate.textContent = "Ngày sinh không được lớn hơn ngày hiện tại.";
+                    spandate.className = "error";
+                    return;
+                }
+
+                spandate.textContent = "Ngày sinh hợp lệ.";
+                spandate.className = "success";
+            } else {
+                spandate.textContent = " Ngày sinh không hợp lệ";
+                spandate.className = "error";
+            }
+        };
+    </script>
+</body>
+
+</html>
